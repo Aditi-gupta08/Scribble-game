@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    background-color: #343a4e;
+    background-color:  #8c98c1;
+    padding: 30px;
+}
+
+
+.head{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px 200px;
+    margin-bottom: 20px;
+}
+
+.head div{
+    padding: 20px;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 10px 25px;
+}
+
+.main div{
+    height: 300px;
+}
