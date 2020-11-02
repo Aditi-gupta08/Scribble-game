@@ -64,7 +64,8 @@ io.on('connection', socket => {
         
         console.log(socket.id);
         console.log(user.room);
-        io.to(user.room).emit('message', arr);
+        console.log(arr);
+        io.to(user.room).emit('message', arr, user);
     });
 
 

@@ -60,10 +60,11 @@ socket.on('b_message', message => {
 
 
 // Message from server
-socket.on('message', arr => {
+socket.on('message', (arr, user) => {
     /* choosed_word = 'aaa'; */
+    let isCorrect;
 
-    if(arr.msg === arr.wordd)
+    if(arr.msg == arr.wordd)
         isCorrect = true;
     else
         isCorrect = false;
@@ -71,7 +72,7 @@ socket.on('message', arr => {
     console.log(arr.msg, arr.wordd);
     console.log(isCorrect);
 
-    outputMessage(message, isCorrect);
+    outputMessage(arr.msg, isCorrect, user);
 
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -122,7 +123,7 @@ function outputBotMessage(message){
 
 
 // Output message to DOM
-function outputMessage(message, isCorrect){
+function outputMessage(msg, isCorrect, user){
     const div = document.createElement('div');
     div.classList.add('message');
 
@@ -132,10 +133,11 @@ function outputMessage(message, isCorrect){
         div.classList.add('incorrect');
 
 
-    div.innerHTML = ` <p class="meta"> ${message.username}</p>
-    <p class="text">
-        ${message}
-    </p>`;
+    /*  */
+    div.innerHTML = ` 
+    <p class="meta"> ${user.username}</p>
+    <p class="text"> ${msg} </p>
+    `;
 
     document.querySelector('.chat-messages').appendChild(div);
 
