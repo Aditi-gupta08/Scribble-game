@@ -5,7 +5,6 @@ const userList = document.getElementById('users');
 const word = document.getElementById('word');
 const result = document.getElementById('result');
 
-
 // Get username and room from URL
 const {username, room} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
@@ -24,13 +23,14 @@ function randomWord()
 }
 
 
-function startGame() {
+function getWord() {
     console.log("aa");
     choosed_word = randomWord();
     /* choosed_word = 'aaa'; */
     /* document.getElementById('word').innerText = `Your word is /'${word}/'`; */
     /* console.log(`Your word is ${word}`); */
-    let mesg = `Your word is \'${choosed_word}\'`;
+    let mesg = `Your word : \'${choosed_word}\'`;
+    result.innerText = '';
 
     socket.emit('wordTelling', mesg , choosed_word);
 }
@@ -51,7 +51,7 @@ socket.on('roomUsers', ({room, users}) => {
 socket.on('b_message', message => {
     /* console.log(message); */
 
-    outputBotMessage(message);
+    outputMessage(message);
 
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -72,17 +72,23 @@ socket.on('message', (arr, user) => {
     console.log(arr.msg, arr.wordd);
     console.log(isCorrect);
 
-    outputMessage(arr.msg, isCorrect, user);
+    outputguessedWord(arr.msg, isCorrect, user);
 
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 
+socket.on('clear_word_and_result', msg => {
+    result.innerText = ' ';
+    word.innerText = ' ';
+});
+
+
 socket.on('word_tell', msg => {
     word.innerText = msg;
     console.log(msg);
-})
+});
 
 
 
@@ -107,7 +113,7 @@ chatForm.addEventListener('submit', (e) => {
 
 
 // Output message to DOM
-function outputBotMessage(message){
+function outputMessage(message){
     const div = document.createElement('div');
     div.classList.add('message');
     div.classList.add('botMsg');
@@ -123,7 +129,7 @@ function outputBotMessage(message){
 
 
 // Output message to DOM
-function outputMessage(msg, isCorrect, user){
+function outputguessedWord(msg, isCorrect, user){
     const div = document.createElement('div');
     div.classList.add('message');
 
@@ -143,7 +149,10 @@ function outputMessage(msg, isCorrect, user){
 
     if(isCorrect)
     {
-        result.innerText = 'The word was guessed correctly :)';
+        socket.emit('correctlyGuessed', user.username);
+        console.log(user.username);
+        /* result.innerText = 'The word was guessed correctly :)';
+        console.log(formatMessage(botName,'Welcome to Scribble!')); */
     }
     
 }

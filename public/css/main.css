@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -6,6 +8,7 @@
 
 body{
     width: 100vw;
+    height: 100vh;
     background-color: #343a4e;
     background-color:  #8c98c1;
     padding: 30px;
@@ -23,6 +26,10 @@ body{
     padding: 20px;
 }
 
+#getWord{
+    padding: 0px;
+}
+
 .main{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -31,4 +38,9 @@ body{
 
 .main div{
     height: 300px;
+}
+
+#gameName{
+    font-size: 70px;
+  font-family: 'Rye', cursive;
 }

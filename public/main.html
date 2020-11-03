@@ -16,11 +16,11 @@
 
     <div class="cont">
 
-        <div class="head">
+        <div class="head" class="fluid">
             <span class="timer"> </span>
             <span id="word"></span>
-            <h1 > DOODLE </h1>
-            <button onclick="startGame()"> Start game </button>
+            <h1 id="gameName"> DOODLE </h1>
+            <button onclick="getWord()" id="getWord"> Get Word </button>
             <span id="result"> </span>
         </div>
 
@@ -31,7 +31,7 @@
                 <h3><i class="fas fa-comments"></i> Room Code:</h3>
                 <h2 id="room-name"></h2>
 
-                <h3><i class="fas fa-users"></i> Users</h3>
+                <h3><i class="fas fa-users"></i> Players </h3>
                 <ul id="users"></ul>
             </div>
 

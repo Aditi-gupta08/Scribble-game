@@ -11,7 +11,6 @@ const fs = require('fs');
 const word_path = path.join( __dirname); */
 const word_path = './utils/word.js';
 
-
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -51,6 +50,14 @@ io.on('connection', socket => {
        
     });
 
+    socket.on('correctlyGuessed', (usrName) => {
+        console.log('pp',usrName);
+        console.log("aa");
+        const user = getCurrentUser(socket.id);
+        console.log(user);
+        socket.to(user.room).emit('b_message', formatMessage( botName,`The word was guessed correctly by ${usrName}`));
+    });
+
 
     // Listen for chat Message
     socket.on('chatMessage', (msg) => {
@@ -70,6 +77,10 @@ io.on('connection', socket => {
 
 
     socket.on('wordTelling', (msg, wordd) => {
+        const user = getCurrentUser(socket.id);
+        var words = JSON.parse(fs.readFileSync(word_path));
+        console.log(words);
+        io.to(user.room).emit('clear_word_and_result', '');
         io.to(socket.id).emit( 'word_tell', msg);
 
         var tmp = [{'nm': wordd}]
@@ -79,7 +90,7 @@ io.on('connection', socket => {
 
     // Drawing 
     socket.on('mouse', (data) => {
-        console.log('nwe connection:' + socket.id);
+        console.log('new connection:' + socket.id);
         socket.broadcast.emit('mouse',data);
         console.log(data);
     });
