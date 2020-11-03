@@ -26,9 +26,6 @@ function randomWord()
 function getWord() {
     console.log("aa");
     choosed_word = randomWord();
-    /* choosed_word = 'aaa'; */
-    /* document.getElementById('word').innerText = `Your word is /'${word}/'`; */
-    /* console.log(`Your word is ${word}`); */
     let mesg = `Your word : \'${choosed_word}\'`;
     result.innerText = '';
 
@@ -64,7 +61,7 @@ socket.on('message', (arr, user) => {
     /* choosed_word = 'aaa'; */
     let isCorrect;
 
-    if(arr.msg == arr.wordd)
+    if((arr.msg).toLowerCase() == (arr.wordd).toLowerCase())
         isCorrect = true;
     else
         isCorrect = false;
@@ -80,7 +77,6 @@ socket.on('message', (arr, user) => {
 
 
 socket.on('clear_word_and_result', msg => {
-    result.innerText = ' ';
     word.innerText = ' ';
 });
 
@@ -150,9 +146,6 @@ function outputguessedWord(msg, isCorrect, user){
     if(isCorrect)
     {
         socket.emit('correctlyGuessed', user.username);
-        console.log(user.username);
-        /* result.innerText = 'The word was guessed correctly :)';
-        console.log(formatMessage(botName,'Welcome to Scribble!')); */
     }
     
 }

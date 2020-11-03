@@ -63,12 +63,12 @@ io.on('connection', socket => {
     socket.on('chatMessage', (msg) => {
         const user = getCurrentUser(socket.id);
         var tmpp = JSON.parse(fs.readFileSync(word_path));
-        var wordd = tmpp[0].nm; 
+        var wordd = tmpp[0][user.room]; 
         var arr = {
             msg,
             wordd
         }
-        
+
         console.log(socket.id);
         console.log(user.room);
         console.log(arr);
@@ -83,8 +83,12 @@ io.on('connection', socket => {
         io.to(user.room).emit('clear_word_and_result', '');
         io.to(socket.id).emit( 'word_tell', msg);
 
-        var tmp = [{'nm': wordd}]
-        fs.writeFileSync(word_path, JSON.stringify(tmp, null, 2));
+        console.log(wordd);
+
+        words[0][user.room] = wordd;
+        fs.writeFileSync(word_path, JSON.stringify(words, null, 2));
+
+        io.to(user.room).emit('b_message', formatMessage( botName,`${user.username} is drawing`));
     });
 
 
