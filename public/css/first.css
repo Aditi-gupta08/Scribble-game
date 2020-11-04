@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&display=swap');
 
 body{
     background-image:url("../images/BG.png");
@@ -26,14 +27,14 @@ body{
 }
 
 .right{
-    margin-top: 7vh;
+    margin-top: 11vh;
     font-family: 'Itim', cursive;
     font-size: 30px;
 }
 
 .join-main {
     width: 50%;
-    margin: 38% 20%;
+    margin: 38% 0% 0% 21%;
     padding: 20px 0px;
     border-radius: 10px;
     background: #9c9ead45;
@@ -69,5 +70,10 @@ body{
 
 
 #new_room_code_div{
-	display: none;
+    display: none;
+}
+
+#new_room_code_div span{
+    font-family: 'Grenze Gotisch', cursive;
+    font-size: 40px;
 }
