@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 body{
     background-image:url("../images/BG.png");
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
+
 .main{
     display: grid;
     grid-template-columns: 3fr 2fr;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -22,9 +26,10 @@ body{
 }
 
 .right{
-    margin-top: 25vh;
+    margin-top: 7vh;
+    font-family: 'Itim', cursive;
+    font-size: 30px;
 }
-
 
 .join-main {
     width: 50%;
