@@ -1,8 +1,11 @@
 var socket;
-function setup() {
-  cv = createCanvas(500, 500);
-  cv.position(400, 400);
-  cv.background(51);
+const cv = document.querySelector("#canvas");
+
+
+function setup() {  
+  /* cv = createCanvas(500, 500); */
+  /* cv.position(400, 400);
+  cv.background(51); */
 
   /* socket=io.connect('http://localhost:3000'); */
   socket = io();

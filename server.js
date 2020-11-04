@@ -100,7 +100,6 @@ io.on('connection', socket => {
     });
 
 
-
     // Runs when client disconnects
     socket.on('disconnect', () => {
         const user = userLeave(socket.id);

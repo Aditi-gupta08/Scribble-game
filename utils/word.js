@@ -5,6 +5,8 @@
     "untps": "water cycle",
     "qupcm": "ceiling fan",
     "clz49": "headache",
-    "hvftl": "duck"
+    "hvftl": "duck",
+    "gajgs": "wallet",
+    "8tk0u": "cough"
   }
 ]
